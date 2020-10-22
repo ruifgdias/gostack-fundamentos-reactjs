@@ -58,7 +58,7 @@ const Dashboard: React.FC = () => {
               <img src={income} alt="Income" />
             </header>
             <h1 data-testid="balance-income">
-              R$ {formatValue(balance.income)}
+              {formatValue(balance.income)}
             </h1>
           </Card>
           <Card>
@@ -67,7 +67,7 @@ const Dashboard: React.FC = () => {
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">
-              R$ {formatValue(balance.outcome)}
+              {formatValue(balance.outcome)}
             </h1>
           </Card>
           <Card total>
@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
               <p>Total</p>
               <img src={total} alt="Total" />
             </header>
-            <h1 data-testid="balance-total">R$ {formatValue(balance.total)}</h1>
+            <h1 data-testid="balance-total">{formatValue(balance.total)}</h1>
           </Card>
         </CardContainer>
 
@@ -94,10 +94,10 @@ const Dashboard: React.FC = () => {
               {transactions.map(transaction => {
                 if (transaction.type === 'income') {
                   return (
-                    <tr>
+                    <tr key={transaction.id}>
                       <td className="title">{transaction.title}</td>
                       <td className="income">
-                        R$ {formatValue(transaction.value)}
+                        {formatValue(transaction.value)}
                       </td>
                       <td>{transaction.category.title}</td>
                       <td>{transaction.formattedDate}</td>
@@ -105,10 +105,10 @@ const Dashboard: React.FC = () => {
                   );
                 }
                 return (
-                  <tr>
+                  <tr key={transaction.id}>
                     <td className="title">{transaction.title}</td>
                     <td className="outcome">
-                      - R$ {formatValue(transaction.value)}
+                      - {formatValue(transaction.value)}
                     </td>
                     <td>{transaction.category.title}</td>
                     <td>{transaction.formattedDate}</td>
